@@ -1,0 +1,57 @@
+local HubIcons = {}
+
+local request = syn and syn.request or http and http.request or http_request or request or httprequest
+
+local getcustomasset = getcustomasset or getsynasset
+
+local isfolder = isfolder or syn_isfolder or is_folder
+
+local makefolder = makefolder or make_folder or createfolder or create_folder
+
+if not isfolder("PackIcons") then
+
+makefolder("PackIcons")
+
+    
+
+local WorldAsset = request({Url = "https://github.com/unknownkellymcroblox/myscripts/blob/main/KellyHub/WorldIcon.png?raw=true", Method = "GET"})
+
+writefile("PackIcons/WorldIcon.png", WorldAsset.Body)
+
+local UtilityAsset = request({Url = "https://github.com/unknownkellymcroblox/myscripts/blob/main/KellyHub/UtilityIcon.png?raw=true", Method = "GET"})
+
+writefile("PackIcons/UtilityIcon.png", UtilityAsset.Body)
+
+local RenderAsset = request({Url = "https://github.com/unknownkellymcroblox/myscripts/blob/main/KellyHub/RenderIcon.png?raw=true", Method = "GET"})
+
+writefile("PackIcons/RenderIcon.png", RenderAsset.Body)
+
+local BlatantAsset = request({Url = "https://github.com/unknownkellymcroblox/myscripts/blob/main/KellyHub/BlatantIcon.png?raw=true", Method = "GET"})
+
+writefile("PackIcons/BlatantIcon.png", BlatantAsset.Body)
+
+end
+
+HubIcons.Icons   = {
+
+    Combat   = "rbxassetid://10401329089";
+
+    Movement = "rbxassetid://10403468113";
+
+    Visuals  = "rbxassetid://10403490626";
+
+    Settings = "rbxassetid://10403508076";
+
+    Blatant = getcustomasset("PackIcons/BlatantIcon.png");
+
+    Render = getcustomasset("PackIcons/RenderIcon.png");
+
+    Utility = getcustomasset("PackIcons/UtilityIcon.png");
+
+    World = getcustomasset("PackIcons/WorldIcon.png");
+
+    Others   = "rbxassetid://10403543022";
+
+};
+
+return HubIcons
